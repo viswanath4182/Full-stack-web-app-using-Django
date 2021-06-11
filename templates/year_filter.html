@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Filter by year{% endblock %}
+{% block content %}
+<h2>students who are born in {{year}} are</h2>
+{% for obj in objects %}
+<h3>{{obj.name}}</h3>
+{% endfor %}
+{% endblock %}
+

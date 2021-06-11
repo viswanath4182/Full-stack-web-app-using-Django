@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+Marks
+{% endblock %}
+{% block content %}
+<h2>Marks are listed below</h2>
+{{marks}}
+{% for mark in marks %}
+<ul>
+    <li>{{mark}}</li>
+</ul>
+{% endfor %}
+{% if is_goodstudent == True %}
+<h1>David is a good student</h1>
+{% else %}
+<h1>David is an average student</h1>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+Ranks
+{% endblock %}
+{% block content %}
+<h3>ranks of a student are</h3>
+
+{% for rank in list %}
+<ul>
+    <li>{{rank}}</li>
+</ul>
+{% endfor %}
+{% endblock %}
