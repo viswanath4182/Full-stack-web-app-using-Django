@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Student
+from .models import Student, RegData
+from .forms import RegForm
+
 
 def home(request):
-    obj = Student.objects.get(id=1)
+    objs = Student.objects.all()
     context = {'home': 'This is the home page of a student',
-               'obj': obj}
+               'objs': objs}
 
     return render(request, 'home.html', context)
 
@@ -23,6 +25,20 @@ def name_year(request, year):
     context = {'objects': objects,
                'year': year}
     return render(request, 'year_filter.html', context)
+
+def register(request):
+    form = RegForm()
+    context = {'form': form}
+    return render(request, 'home.html', context)
+def addUser(request):
+    form = RegForm(request.POST)
+    if form.is_valid():
+        registered_data=RegData(username=form.cleaned_data['username'], name=form.cleaned_data['name'],
+                                password=form.cleaned_data['password'], number=form.cleaned_data['number'])
+        registered_data.save()
+    return redirect('home')
+
+
 
 
 

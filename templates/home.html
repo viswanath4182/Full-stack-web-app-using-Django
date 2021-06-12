@@ -5,11 +5,20 @@ Home
 {% block content %}
 <h3> {{home}}</h3>
 <h3>student details are mentioned below</h3>
-{{obj.name}}<br>
-{{obj.city}}<br>
-{{obj.salary}}<br>
-{{obj.birth_year}}<br>
+{% for obj in objs %}
+{{obj}}<br>
+{% endfor %}
+<h3>New students can be added using registration form</h3>
+<div class="container">
+    <h2>Registration Form</h2>
+    <form action="{% url 'addUser' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
 
+    <input type="submit" value="Register">
+
+    </form>
+</div>
 {% endblock %}
 
 
